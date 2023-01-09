@@ -34,9 +34,24 @@ germline_PTCome = na.omit(germline_PTCome)
 germline_PTCome   #vector result
 ```
 
+```{r}
+#3. Cancer-associated PTCome
+cancer_PTCome <- PTEN_COSMIC[, 6]   #INSERT HERE THE NAME OF YOUR COSMIC CSV FILE
+#selection of the AA Mutation column
+cancer_PTCome <- str_sub(cancer_PTCome$`AA Mutation`, 4, 11)   #extract the numeric fraction
+cancer_PTCome <- data.frame (residues = c(cancer_PTCome))
+count <- table(cancer_PTCome$residues)   #count of the number of mutations described in each residue (independently of the nucleotidic change)
+cancer_PTCome <- unique(cancer_PTCome)   #select unique residues
+df_cancer <- data.frame(count)   #dataframe with unique PTC and the number of times they have been reported
+df_cancer <- arrange(df_cancer, Var1)   #PTC ordered by residue number
+cancer_PTCome <- as.integer(gsub("[:*:]", "", df_cancer$Var1))   #extract the numeric fraction
+cancer_PTCome <- c(sort(cancer_PTCome))
+
+cancer_PTCome   #vector result
+```
 
 ```{r}
-#3. Kernel density plot representation
+#4. Kernel density plot representation
 protein_name <- "PTEN"   #INSERT HERE YOUR PROTEIN NAME
 protein_length <- 401   #INSERT HERE YOUR PROTEIN LENGHT
 
@@ -72,22 +87,5 @@ lines(d_100_germline, col = "blue", lwd = 3.5)
 lines(d_100_cancer, col = "red", lwd = 3.5)
 title(ylab=substitute(paste(bold("Density"))), col.lab="black", cex.lab = 1.5, line = 2.2)
 
-```
-
-
-```{r}
-#4. Cancer-associated PTCome
-cancer_PTCome <- PTEN_COSMIC[, 6]   #INSERT HERE THE NAME OF YOUR COSMIC CSV FILE
-#selection of the AA Mutation column
-cancer_PTCome <- str_sub(cancer_PTCome$`AA Mutation`, 4, 11)   #extract the numeric fraction
-cancer_PTCome <- data.frame (residues = c(cancer_PTCome))
-count <- table(cancer_PTCome$residues)   #count of the number of mutations described in each residue (independently of the nucleotidic change)
-cancer_PTCome <- unique(cancer_PTCome)   #select unique residues
-df_cancer <- data.frame(count)   #dataframe with unique PTC and the number of times they have been reported
-df_cancer <- arrange(df_cancer, Var1)   #PTC ordered by residue number
-cancer_PTCome <- as.integer(gsub("[:*:]", "", df_cancer$Var1))   #extract the numeric fraction
-cancer_PTCome <- c(sort(cancer_PTCome))
-
-cancer_PTCome   #vector result
 ```
 
