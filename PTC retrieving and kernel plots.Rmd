@@ -11,34 +11,34 @@ library(stats)
 
 ```{r}
 #1. Potential PTCome
-potential_PTCome <- str_sub(EPM2A_potential$`Gene name:  EPM2A`, 4, 9)   #INSERT HERE THE NAME OF YOUR POTENTIAL PTCOME TEXT FILE
+potential_PTCome <- str_sub(PTEN_potential$`Gene name:  PTEN`, 4, 9)  #INSERT HERE THE NAME OF YOUR POTENTIAL PTCOME TXT FILE
 potential_PTCome <- gsub("\\D", "", potential_PTCome)
 potential_PTCome <- as.integer(potential_PTCome)
 potential_PTCome <- na.omit(potential_PTCome)
 
-potential_PTCome   #result
+potential_PTCome   #vector result
 ```
 
 ```{r}
 #2. Germline-associated PTCome
-germline_PTCome <- EPM2A_HGMD[, 5]   #INSERT HERE THE NAME OF YOUR HGMD EXCEL FILE 
+germline_PTCome <- PTEN_HGMD[, 5]   #INSERT HERE THE NAME OF YOUR HGMD EXCEL FILE 
 #select the 'protein change' column
 residues <- c(germline_PTCome$...5)
 str(residues)
-nonsense <- grep("[:*:]", residues, value=T)   #extraction of nonsense mutations
-germline_PTCome=str_sub(nonsense, 4, 9)
-germline_PTCome=as.integer(gsub("[:*:]", "", germline_PTCome))   #extract the numeric fraction
-germline_PTCome=unique(germline_PTCome)
-germline_PTCome=na.omit(germline_PTCome)
+nonsense <- grep("[:*:]", residues, value = T)   #extraction of nonsense mutations
+germline_PTCome = str_sub(nonsense, 4, 9)
+germline_PTCome = as.integer(gsub("[:*:]", "", germline_PTCome))   #extract the numeric fraction
+germline_PTCome = unique(germline_PTCome)
+germline_PTCome = na.omit(germline_PTCome)
 
-germline_PTCome   #result
+germline_PTCome   #vector result
 ```
 
 
 ```{r}
 #3. Kernel density plot representation
-protein_name <- "EPM2A"   #INSERT HERE YOUR PROTEIN NAME
-protein_length <- 331   #INSERT HERE YOUR PROTEIN LENGHT
+protein_name <- "PTEN"   #INSERT HERE YOUR PROTEIN NAME
+protein_length <- 401   #INSERT HERE YOUR PROTEIN LENGHT
 
 #germline
 germline_100 <- ((germline_PTCome)*100)/ protein_length
@@ -67,9 +67,10 @@ d_100_germline <- density(germline_100_total)
 d_100_cancer <- density(cancer_100_total)
 
 #plot
-plot(d_100_potential, main= protein_name, col="black", ylim=c(0,0.005), lwd=3.5, xlim=c(0,100), ylab="", font.axis=2, cex.axis=0.985)
-lines(d_100_germline, col="blue", lwd = 3.5)
-title(ylab=substitute(paste(bold("Density"))), col.lab="black", cex.lab =1.5, line=2.2)
+plot(d_100_potential, main = protein_name, col = "black", ylim = c(0,0.005), lwd = 3.5, xlim = c(0,100), ylab = "", font.axis=2, cex.axis=0.985)
+lines(d_100_germline, col = "blue", lwd = 3.5)
+lines(d_100_cancer, col = "red", lwd = 3.5)
+title(ylab=substitute(paste(bold("Density"))), col.lab="black", cex.lab = 1.5, line = 2.2)
 
 ```
 
@@ -87,6 +88,6 @@ df_cancer <- arrange(df_cancer, Var1)   #PTC ordered by residue number
 cancer_PTCome <- as.integer(gsub("[:*:]", "", df_cancer$Var1))   #extract the numeric fraction
 cancer_PTCome <- c(sort(cancer_PTCome))
 
-cancer_PTCome   #result
+cancer_PTCome   #vector result
 ```
 
