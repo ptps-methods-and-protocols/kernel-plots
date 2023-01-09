@@ -55,21 +55,21 @@ cancer_PTCome   #vector result
 protein_name <- "PTEN"   #INSERT HERE YOUR PROTEIN NAME
 protein_length <- 401   #INSERT HERE YOUR PROTEIN LENGHT
 
-#germline
+#germline-associated PTCome
 germline_100 <- ((germline_PTCome)*100)/ protein_length
 
 germline_100_neg <- c(-(germline_100))
 germline_100_pos <- c(germline_100_neg+200)
 germline_100_total <- c(germline_100, germline_100_neg, germline_100_pos)
 
-#potential
+#potential PTCome
 potential_100 <- ((potential_PTCome)*100)/ protein_length
 
 potential_100_neg <- c(-(potential_100))
 potential_100_pos <- c(potential_100_neg+200)
 potential_100_total <- c(potential_100, potential_100_neg, potential_100_pos)
 
-#cancer (extracted in section 4)
+#cancer-associated PTCome
 cancer_100 <- ((cancer_PTCome)*100)/ protein_length
 
 cancer_100_neg <- c(-(cancer_100))
