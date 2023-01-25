@@ -2,7 +2,7 @@
 
 Mutational databases usually display graphical representations using quantitave data, meaning they take into account the number of times certain mutation has been described in samples. Mutational hotspots can occur both due to the protein output of the mutation or the mutagenic chemical properties of a given nucleotide sequence, or because a mixture of both. As an example of sequences of elevated mutability, CG to TG conversions occur with relatively high frequency in Arg (R) codons (CGA), due to spontaneous reactions of deaminase enzymes. 
 
-Nonsense mutations that led to premature termination codons (PTC) are relatively abundant in PTPs, and understanding how these are distributed along their coding sequence may provide genotype/phenotype information. We have developed this code that can be copied and run in R, to retrieve unique PTC mutations from COSMIC (cancer-associated PTCome) and HGMD (germline-asociated PTCome) databases, and represent them in a plot which we have designated Kernel density plot, based on kernel density estimation. 
+Nonsense mutations that led to premature termination codons (PTC) are relatively abundant in PTPs, and understanding how these are distributed along their coding sequence may provide genotype/phenotype information. We have developed this code that can be copied and run in R, to retrieve unique PTC mutations of a desired gene from COSMIC (cancer-associated PTCome) and HGMD (germline-asociated PTCome) databases, and represent them in a plot which we have designated Kernel density plot, based on kernel density estimation. 
 
 ## Obtention of datasets containing PTC data
 
