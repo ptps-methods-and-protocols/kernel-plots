@@ -10,7 +10,7 @@ For representing Kernel density plots 3 vectors are obtained using files downloa
 
 ## Kernel density plot representation
 
-These files are processed by three sections in this code (section #1 for the potential PTCome, section #2 for the germline-associated PTCome and section #3 for the cancer-associated PTCome). These PTComes are then represented in a kernel density plot in section #4. In red is the cancer-associated PTCome, in blue the germline-associated PTCome and in black the potential PTCome. **Protein name and length must be introduced in lines 40 and 41**, PTEN name and protein length are given as an example. Of relevance is that for obtaining representative curves a minimal number of described PTC is needed.
+These files are processed by three sections in this code (section #1 for the potential PTCome, section #2 for the germline-associated PTCome and section #3 for the cancer-associated PTCome). These PTComes are then represented in a kernel density plot in section #4. In red is the cancer-associated PTCome, in blue the germline-associated PTCome and in black the potential PTCome. **Protein name and length must be introduced in lines 40 and 41**; PTEN name and protein length are given as an example. Of relevance is that for obtaining representative curves a minimal number of described PTC is needed.
 
 Kernel density plot representation gives an indication of possible protein areas relevat for pathogenicity. Protein regions more targeted by PTC in a disease context could be more implicated in the pathogenicity. A reliable control is the potential PTCome, which usually would render a stright line in the kernel denisty plot.
 
